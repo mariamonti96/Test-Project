@@ -21,7 +21,7 @@ public class GroundPlaneUI : MonoBehaviour
 
     [Header("UI Buttons")]
     public Button m_ResetButton;
-    public Toggle m_PlacementToggle, m_GroundToggle, m_MidAirToggle;
+    public Toggle m_PlacementToggle, m_GroundToggle, m_MidAirToggle, m_MidAirToggle2;
     #endregion // PUBLIC_MEMBERS
 
 
@@ -45,7 +45,9 @@ public class GroundPlaneUI : MonoBehaviour
     void Start()
     {
         m_ResetButton.interactable = m_MidAirToggle.interactable =
-            m_GroundToggle.interactable = m_PlacementToggle.interactable = false;
+        m_GroundToggle.interactable = m_PlacementToggle.interactable = 
+                m_MidAirToggle2.interactable = false;
+
 
         m_Title.text = TITLE_PLACEMENT;
         m_TrackerStatus.text = "";
@@ -65,6 +67,7 @@ public class GroundPlaneUI : MonoBehaviour
         if (m_ProductPlacement.IsPlaced || PlaneManager.AstronautIsPlaced)
         {
             m_ResetButton.interactable = m_MidAirToggle.interactable = true;
+            m_ResetButton.interactable = m_MidAirToggle2.interactable = true;
         }
 
         m_TrackerStatusImage.enabled = !string.IsNullOrEmpty(m_TrackerStatus.text);
@@ -132,6 +135,9 @@ public class GroundPlaneUI : MonoBehaviour
     public void Reset()
     {
         m_ResetButton.interactable = m_MidAirToggle.interactable = false;
+        m_ResetButton.interactable = m_MidAirToggle2.interactable = false;
+        
+
 
         m_PlacementToggle.isOn = true;
     }
@@ -161,6 +167,7 @@ public class GroundPlaneUI : MonoBehaviour
         if (Vuforia.VuforiaRuntimeUtilities.IsPlayMode())
         {
             m_MidAirToggle.interactable = true;
+            m_MidAirToggle2.interactable = true;
             m_ResetButton.interactable = true;
         }
 
