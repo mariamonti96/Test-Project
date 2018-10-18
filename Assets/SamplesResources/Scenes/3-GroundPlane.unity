@@ -2610,7 +2610,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 341416438}
-        m_MethodName: SetMidAirMode
+        m_MethodName: SetMidAir2Mode
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

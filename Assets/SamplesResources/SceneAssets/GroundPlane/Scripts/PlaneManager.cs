@@ -15,6 +15,7 @@ public class PlaneManager : MonoBehaviour
     {
         GROUND,
         MIDAIR,
+        MIDAIR2,
         PLACEMENT
     }
 
@@ -191,7 +192,7 @@ public class PlaneManager : MonoBehaviour
     {
         if (planeMode == PlaneMode.MIDAIR)
         {
-            Debug.Log("PlaceObjectInMidAir() called.");
+            Debug.Log("PlaceObjectInMidAir() called. planeMode = MIDAIR");
 
             m_ContentPositioningBehaviour.AnchorStage = m_MidAirAnchor;
             m_ContentPositioningBehaviour.PositionContentAtMidAirAnchor(midAirTransform);
@@ -199,6 +200,11 @@ public class PlaneManager : MonoBehaviour
 
             m_MidAirAugmentation.transform.localPosition = Vector3.zero;
             UtilityHelper.RotateTowardCamera(m_MidAirAugmentation);
+
+
+        }
+        else if(planeMode == PlaneMode.MIDAIR2){
+            Debug.Log("PlaceObjectInMidAir() called. planeMode = MIDAIR2");
 
             m_ContentPositioningBehaviour.AnchorStage = m_MidAirAnchor2;
             m_ContentPositioningBehaviour.PositionContentAtMidAirAnchor(midAirTransform);
@@ -247,6 +253,17 @@ public class PlaneManager : MonoBehaviour
             m_PlaneFinder.enabled = true;
             m_MidAirPositioner.enabled = false;
             m_TouchHandler.enableRotation = m_PlacementAugmentation.activeInHierarchy;
+        }
+    }
+
+    public void SetMidAir2Mode(bool active){
+        if(active){
+            planeMode = PlaneMode.MIDAIR2;
+            m_GroundPlaneUI.UpdateTitle();
+            m_PlaneFinder.enabled = false;
+            m_MidAirPositioner.enabled = true;
+            m_TouchHandler.enableRotation = false;
+
         }
     }
 

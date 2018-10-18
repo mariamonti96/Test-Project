@@ -29,6 +29,7 @@ public class GroundPlaneUI : MonoBehaviour
     const string TITLE_PLACEMENT = "Product Placement";
     const string TITLE_GROUNDPLANE = "Ground Plane";
     const string TITLE_MIDAIR = "Mid-Air";
+    const string TITLE_MIDAIR2 = "Mid-Air Spacecraft";
 
     GraphicRaycaster m_GraphicRayCaster;
     PointerEventData m_PointerEventData;
@@ -119,6 +120,9 @@ public class GroundPlaneUI : MonoBehaviour
             {
                 m_Instructions.text = "Tap to place Drone";
             }
+            else if (PlaneManager.planeMode == PlaneManager.PlaneMode.MIDAIR2){
+                m_Instructions.text = "Tap to place Spacecraft";
+            }
         }
     }
 
@@ -154,6 +158,9 @@ public class GroundPlaneUI : MonoBehaviour
                 break;
             case PlaneManager.PlaneMode.PLACEMENT:
                 m_Title.text = TITLE_PLACEMENT;
+                break;
+            case PlaneManager.PlaneMode.MIDAIR2:
+                m_Title.text = TITLE_MIDAIR2;
                 break;
         }
     }
