@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731196, g: 0.38074002, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -343,7 +343,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: c6045ffd0db911d418ecf014e1fbd650, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6045ffd0db911d418ecf014e1fbd650, type: 3}
@@ -516,12 +516,10 @@ MonoBehaviour:
   m_Title: {fileID: 879360503}
   m_TrackerStatus: {fileID: 1335426298}
   m_Instructions: {fileID: 123777250}
-  m_ScreenReticle: {fileID: 1550871683}
-  m_ResetButton: {fileID: 599862452}
-  m_PlacementToggle: {fileID: 988858218}
-  m_GroundToggle: {fileID: 393628025}
-  m_MidAirToggle: {fileID: 1360386721}
-  m_MidAirToggle2: {fileID: 1431293877}
+  m_ResetButtonDrone: {fileID: 0}
+  m_ResetButtonSpacecraft: {fileID: 0}
+  m_MidAirToggleDrone: {fileID: 0}
+  m_MidAirToggleSpacecraft: {fileID: 0}
 --- !u!1001 &282285520
 Prefab:
   m_ObjectHideFlags: 0
@@ -563,7 +561,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: e9cc4ef39943a4d3b9449ca70928e0e5, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e9cc4ef39943a4d3b9449ca70928e0e5, type: 3}
       propertyPath: m_LocalScale.x
@@ -600,16 +598,11 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 282285522}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4c00ac6d2a6f458a83f40d7152fa688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TranslationIndicator: {fileID: 1069037701}
-  m_RotationIndicator: {fileID: 957257382}
-  Floor: {fileID: 236601412}
-  ProductSize: 0.65
-  shadowRenderer: {fileID: 1182390042}
 --- !u!114 &282285524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -954,12 +947,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a7ad9fa0029b4939873b51d6138948d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PlaneFinder: {fileID: 1908681705}
   m_MidAirPositioner: {fileID: 1076319839}
-  m_PlaneAugmentation: {fileID: 2037963495}
-  m_MidAirAugmentation: {fileID: 1215276735}
-  m_PlacementAugmentation: {fileID: 282285522}
-  m_MidAirAugmentation2: {fileID: 1091059358}
+  m_MidAirAugmentationDrone: {fileID: 0}
+  m_MidAirAugmentationSpacecraft: {fileID: 0}
 --- !u!1 &393628022
 GameObject:
   m_ObjectHideFlags: 0
@@ -2128,11 +2118,6 @@ Transform:
   m_Father: {fileID: 341416437}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1091059358 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1412742708598286, guid: 347040970b496ba4086308c48e34652b,
-    type: 2}
-  m_PrefabInternal: {fileID: 2084182346}
 --- !u!4 &1091059359 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4874934499113314, guid: 347040970b496ba4086308c48e34652b,
@@ -2214,11 +2199,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1182390040}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1215276735 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: 78122509d8ec13f44bf4508cb85fe4c3,
-    type: 3}
-  m_PrefabInternal: {fileID: 1583689714}
 --- !u!1 &1335426296
 GameObject:
   m_ObjectHideFlags: 0
@@ -3431,11 +3411,6 @@ Transform:
   m_Father: {fileID: 310422460}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2037963495 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100004, guid: c6045ffd0db911d418ecf014e1fbd650,
-    type: 3}
-  m_PrefabInternal: {fileID: 125534081}
 --- !u!1001 &2084182346
 Prefab:
   m_ObjectHideFlags: 0
