@@ -13,17 +13,21 @@ public class MidAirManager : MonoBehaviour
 {
     public enum PlaneMode
     {
-        DRONE,
-        SPACECRAFT
+        GROUND,
+        MIDAIR,
+        MIDAIR2,
+        PLACEMENT
     }
 
     #region PUBLIC_MEMBERS
-    //public PlaneFinderBehaviour m_PlaneFinder;
+    public PlaneFinderBehaviour m_PlaneFinder;
     public MidAirPositionerBehaviour m_MidAirPositioner;
 
-    [Header("Augmentations")]
-    public GameObject m_DroneAugmentation;
-    public GameObject m_SpacecraftAugmentation;
+    [Header("Plane, Mid-Air, & Placement Augmentations")]
+    public GameObject m_PlaneAugmentation;
+    public GameObject m_MidAirAugmentation;
+    public GameObject m_PlacementAugmentation;
+    public GameObject m_MidAirAugmentation2;
     public static bool GroundPlaneHitReceived, AstronautIsPlaced;
     public static PlaneMode planeMode = PlaneMode.PLACEMENT;
 
