@@ -1034,7 +1034,7 @@ GameObject:
   - component: {fileID: 1054608933}
   - component: {fileID: 1054608932}
   m_Layer: 0
-  m_Name: GroundPlaneUI
+  m_Name: MidAirUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1242,6 +1242,10 @@ Prefab:
       objectReference: {fileID: 2100000, guid: cc145d1fd6438764b9d70e6a831f0729, type: 2}
     - target: {fileID: 400006, guid: 78122509d8ec13f44bf4508cb85fe4c3, type: 3}
       propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 78122509d8ec13f44bf4508cb85fe4c3, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1918,11 +1922,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4874934499113314, guid: 347040970b496ba4086308c48e34652b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.81500006
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4874934499113314, guid: 347040970b496ba4086308c48e34652b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.08200002
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4874934499113314, guid: 347040970b496ba4086308c48e34652b, type: 2}
       propertyPath: m_LocalPosition.z
