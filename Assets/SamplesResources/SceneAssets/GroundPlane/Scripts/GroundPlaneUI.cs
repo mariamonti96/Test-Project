@@ -21,7 +21,7 @@ public class GroundPlaneUI : MonoBehaviour
 
     [Header("UI Buttons")]
     public Button m_ResetButton;
-    public Toggle m_PlacementToggle, m_GroundToggle, m_MidAirToggle, m_MidAirToggle2;
+    public Toggle m_PlacementToggle, m_GroundToggle, m_MidAirToggle;
     #endregion // PUBLIC_MEMBERS
 
 
@@ -29,7 +29,6 @@ public class GroundPlaneUI : MonoBehaviour
     const string TITLE_PLACEMENT = "Product Placement";
     const string TITLE_GROUNDPLANE = "Ground Plane";
     const string TITLE_MIDAIR = "Mid-Air";
-    const string TITLE_MIDAIR2 = "Mid-Air Spacecraft";
 
     GraphicRaycaster m_GraphicRayCaster;
     PointerEventData m_PointerEventData;
@@ -46,9 +45,7 @@ public class GroundPlaneUI : MonoBehaviour
     void Start()
     {
         m_ResetButton.interactable = m_MidAirToggle.interactable =
-        m_GroundToggle.interactable = m_PlacementToggle.interactable = 
-                m_MidAirToggle2.interactable = false;
-
+            m_GroundToggle.interactable = m_PlacementToggle.interactable = false;
 
         m_Title.text = TITLE_PLACEMENT;
         m_TrackerStatus.text = "";
@@ -65,11 +62,10 @@ public class GroundPlaneUI : MonoBehaviour
 
     void Update()
     {
-        //if (m_ProductPlacement.IsPlaced || PlaneManager.AstronautIsPlaced)
-        //{
-        //    m_ResetButton.interactable = m_MidAirToggle.interactable = true;
-        //    m_ResetButton.interactable = m_MidAirToggle2.interactable = true;
-        //}
+        if (m_ProductPlacement.IsPlaced || PlaneManager.AstronautIsPlaced)
+        {
+            m_ResetButton.interactable = m_MidAirToggle.interactable = true;
+        }
 
         m_TrackerStatusImage.enabled = !string.IsNullOrEmpty(m_TrackerStatus.text);
     }
@@ -120,9 +116,6 @@ public class GroundPlaneUI : MonoBehaviour
             {
                 m_Instructions.text = "Tap to place Drone";
             }
-            else if (PlaneManager.planeMode == PlaneManager.PlaneMode.MIDAIR2){
-                m_Instructions.text = "Tap to place Spacecraft";
-            }
         }
     }
 
@@ -138,10 +131,7 @@ public class GroundPlaneUI : MonoBehaviour
     #region PUBLIC_METHODS
     public void Reset()
     {
-        //m_ResetButton.interactable = m_MidAirToggle.interactable = false;
-        //m_ResetButton.interactable = m_MidAirToggle2.interactable = false;
-        
-
+        m_ResetButton.interactable = m_MidAirToggle.interactable = false;
 
         m_PlacementToggle.isOn = true;
     }
@@ -159,9 +149,6 @@ public class GroundPlaneUI : MonoBehaviour
             case PlaneManager.PlaneMode.PLACEMENT:
                 m_Title.text = TITLE_PLACEMENT;
                 break;
-            case PlaneManager.PlaneMode.MIDAIR2:
-                m_Title.text = TITLE_MIDAIR2;
-                break;
         }
     }
 
@@ -171,15 +158,11 @@ public class GroundPlaneUI : MonoBehaviour
         m_PlacementToggle.interactable = true;
         m_GroundToggle.interactable = true;
 
-        //if (Vuforia.VuforiaRuntimeUtilities.IsPlayMode())
-        //{
-        //    m_MidAirToggle.interactable = true;
-        //    m_MidAirToggle2.interactable = true;
-        //    m_ResetButton.interactable = true;
-        //}
-        m_MidAirToggle.interactable = true;
-        m_MidAirToggle2.interactable = true;
-        m_ResetButton.interactable = true;
+        if (Vuforia.VuforiaRuntimeUtilities.IsPlayMode())
+        {
+            m_MidAirToggle.interactable = true;
+            m_ResetButton.interactable = true;
+        }
 
         // Make the PlacementToggle active
         m_PlacementToggle.isOn = true;

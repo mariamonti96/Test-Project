@@ -15,7 +15,6 @@ public class PlaneManager : MonoBehaviour
     {
         GROUND,
         MIDAIR,
-        MIDAIR2,
         PLACEMENT
     }
 
@@ -27,7 +26,6 @@ public class PlaneManager : MonoBehaviour
     public GameObject m_PlaneAugmentation;
     public GameObject m_MidAirAugmentation;
     public GameObject m_PlacementAugmentation;
-    public GameObject m_MidAirAugmentation2;
     public static bool GroundPlaneHitReceived, AstronautIsPlaced;
     public static PlaneMode planeMode = PlaneMode.PLACEMENT;
 
@@ -53,7 +51,7 @@ public class PlaneManager : MonoBehaviour
     TouchHandler m_TouchHandler;
     ProductPlacement m_ProductPlacement;
     GroundPlaneUI m_GroundPlaneUI;
-    AnchorBehaviour m_PlaneAnchor, m_MidAirAnchor, m_PlacementAnchor, m_MidAirAnchor2;
+    AnchorBehaviour m_PlaneAnchor, m_MidAirAnchor, m_PlacementAnchor;
     int AutomaticHitTestFrameCount;
     int m_AnchorCounter;
     bool uiHasBeenInitialized;
@@ -79,12 +77,10 @@ public class PlaneManager : MonoBehaviour
         m_PlaneAnchor = m_PlaneAugmentation.GetComponentInParent<AnchorBehaviour>();
         m_MidAirAnchor = m_MidAirAugmentation.GetComponentInParent<AnchorBehaviour>();
         m_PlacementAnchor = m_PlacementAugmentation.GetComponentInParent<AnchorBehaviour>();
-        m_MidAirAnchor2 = m_MidAirAugmentation2.GetComponentInParent<AnchorBehaviour>();
 
         UtilityHelper.EnableRendererColliderCanvas(m_PlaneAugmentation, false);
         UtilityHelper.EnableRendererColliderCanvas(m_MidAirAugmentation, false);
         UtilityHelper.EnableRendererColliderCanvas(m_PlacementAugmentation, false);
-        UtilityHelper.EnableRendererColliderCanvas(m_MidAirAugmentation2, false);
     }
 
     void Update()
@@ -192,7 +188,7 @@ public class PlaneManager : MonoBehaviour
     {
         if (planeMode == PlaneMode.MIDAIR)
         {
-            Debug.Log("PlaceObjectInMidAir() called. planeMode = MIDAIR");
+            Debug.Log("PlaceObjectInMidAir() called.");
 
             m_ContentPositioningBehaviour.AnchorStage = m_MidAirAnchor;
             m_ContentPositioningBehaviour.PositionContentAtMidAirAnchor(midAirTransform);
@@ -200,18 +196,6 @@ public class PlaneManager : MonoBehaviour
 
             m_MidAirAugmentation.transform.localPosition = Vector3.zero;
             UtilityHelper.RotateTowardCamera(m_MidAirAugmentation);
-
-
-        }
-        else if(planeMode == PlaneMode.MIDAIR2){
-            Debug.Log("PlaceObjectInMidAir() called. planeMode = MIDAIR2");
-
-            m_ContentPositioningBehaviour.AnchorStage = m_MidAirAnchor2;
-            m_ContentPositioningBehaviour.PositionContentAtMidAirAnchor(midAirTransform);
-            UtilityHelper.EnableRendererColliderCanvas(m_MidAirAugmentation2, true);
-
-            m_MidAirAugmentation2.transform.localPosition = Vector3.zero;
-            UtilityHelper.RotateTowardCamera(m_MidAirAugmentation2);
         }
     }
 
@@ -256,17 +240,6 @@ public class PlaneManager : MonoBehaviour
         }
     }
 
-    public void SetMidAir2Mode(bool active){
-        if(active){
-            planeMode = PlaneMode.MIDAIR2;
-            m_GroundPlaneUI.UpdateTitle();
-            m_PlaneFinder.enabled = false;
-            m_MidAirPositioner.enabled = true;
-            m_TouchHandler.enableRotation = false;
-
-        }
-    }
-
     public void ResetScene()
     {
         Debug.Log("ResetScene() called.");
@@ -279,10 +252,6 @@ public class PlaneManager : MonoBehaviour
         m_MidAirAugmentation.transform.position = Vector3.zero;
         m_MidAirAugmentation.transform.localEulerAngles = Vector3.zero;
         UtilityHelper.EnableRendererColliderCanvas(m_MidAirAugmentation, false);
-
-        m_MidAirAugmentation2.transform.position = Vector3.zero;
-        m_MidAirAugmentation2.transform.localEulerAngles = Vector3.zero;
-        UtilityHelper.EnableRendererColliderCanvas(m_MidAirAugmentation2, false);
 
         m_ProductPlacement.Reset();
         UtilityHelper.EnableRendererColliderCanvas(m_PlacementAugmentation, false);
@@ -317,7 +286,6 @@ public class PlaneManager : MonoBehaviour
         m_PlaneAnchor.UnConfigureAnchor();
         m_MidAirAnchor.UnConfigureAnchor();
         m_PlacementAnchor.UnConfigureAnchor();
-        m_MidAirAnchor2.UnConfigureAnchor();
         AnchorExists = DoAnchorsExist();
     }
 
