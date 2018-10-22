@@ -84,7 +84,8 @@ public class PlaneManagerTest : MonoBehaviour
 
         GroundPlaneHitReceived = (AutomaticHitTestFrameCount == Time.frameCount);
 
-        SetSurfaceIndicatorVisible(GroundPlaneHitReceived && (Input.touchCount == 0));
+        //SetSurfaceIndicatorVisible(GroundPlaneHitReceived && (Input.touchCount == 0));
+        SetSurfaceIndicatorVisible(true);
     }
 
     void OnDestroy()
