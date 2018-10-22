@@ -34,7 +34,7 @@ public class ProductPlacementTest : MonoBehaviour
 
     const string EmulatorGroundPlane = "Emulator Ground Plane";
 
-    GroundPlaneUI m_GroundPlaneUI;
+    GroundPlaneTestUI m_GroundPlaneUI;
     Camera mainCamera;
     Ray cameraToPlaneRay;
     RaycastHit cameraToPlaneHit;
@@ -64,7 +64,7 @@ public class ProductPlacementTest : MonoBehaviour
         ChairShadow = Resources.Load<Material>("ChairShadow");
         ChairShadowTransparent = Resources.Load<Material>("ChairShadowTransparent");
 
-        m_GroundPlaneUI = FindObjectOfType<GroundPlaneUI>();
+        m_GroundPlaneUI = FindObjectOfType<GroundPlaneTestUI>();
 
         // Enable floor collider if running on device; Disable if running in PlayMode
         Floor.gameObject.SetActive(!VuforiaRuntimeUtilities.IsPlayMode());
