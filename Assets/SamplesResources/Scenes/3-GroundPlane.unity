@@ -521,7 +521,6 @@ MonoBehaviour:
   m_PlacementToggle: {fileID: 988858218}
   m_GroundToggle: {fileID: 393628025}
   m_MidAirToggle: {fileID: 1360386721}
-  m_MidAirToggle2: {fileID: 1431293877}
 --- !u!1001 &282285520
 Prefab:
   m_ObjectHideFlags: 0
@@ -959,7 +958,6 @@ MonoBehaviour:
   m_PlaneAugmentation: {fileID: 2037963495}
   m_MidAirAugmentation: {fileID: 1215276735}
   m_PlacementAugmentation: {fileID: 282285522}
-  m_MidAirAugmentation2: {fileID: 1091059358}
 --- !u!1 &393628022
 GameObject:
   m_ObjectHideFlags: 0
@@ -2128,11 +2126,6 @@ Transform:
   m_Father: {fileID: 341416437}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1091059358 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1412742708598286, guid: 347040970b496ba4086308c48e34652b,
-    type: 2}
-  m_PrefabInternal: {fileID: 2084182346}
 --- !u!4 &1091059359 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4874934499113314, guid: 347040970b496ba4086308c48e34652b,
@@ -3253,7 +3246,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: Vuforia.HitTestEvent, Vuforia.UnityExtensions, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  mDisplayAdvanced: 0
+  mDisplayAdvanced: 1
   mHitTestMode: 0
 --- !u!114 &1908681706
 MonoBehaviour:
