@@ -238,11 +238,10 @@ public class PlaneManagerTest : MonoBehaviour
     public void ResetScene()
     {
         Debug.Log("ResetScene() called.");
-
         // reset augmentations
         m_PlaneAugmentation.transform.position = Vector3.zero;
         m_PlaneAugmentation.transform.localEulerAngles = Vector3.zero;
-        UtilityHelperTest.EnableRendererColliderCanvas(m_PlaneAugmentation, false);
+        UtilityHelper.EnableRendererColliderCanvas(m_PlaneAugmentation, false);
 
         //m_MidAirAugmentation.transform.position = Vector3.zero;
         //m_MidAirAugmentation.transform.localEulerAngles = Vector3.zero;
@@ -257,7 +256,7 @@ public class PlaneManagerTest : MonoBehaviour
 
         DeleteAnchors();
         //m_ProductPlacement.SetProductAnchor(null);
-        AstronautIsPlaced = false;
+        //AstronautIsPlaced = false;
         m_GroundPlaneUI.Reset();
         //m_TouchHandler.enableRotation = false;
     }

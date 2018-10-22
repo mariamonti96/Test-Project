@@ -142,6 +142,7 @@ public class GroundPlaneTestUI : MonoBehaviour
     #region PUBLIC_METHODS
     public void Reset()
     {
+        Debug.Log("Reset() called");
         //m_ResetButton.interactable = m_MidAirToggle.interactable = false;
         m_ResetButton.interactable = false;
         
@@ -218,7 +219,7 @@ public class GroundPlaneTestUI : MonoBehaviour
     #region VUFORIA_CALLBACKS
     void OnDevicePoseStatusChanged(Vuforia.TrackableBehaviour.Status status, Vuforia.TrackableBehaviour.StatusInfo statusInfo)
     {
-        Debug.Log("OnDevicePoseStatusChanged(" + status + ", " + statusInfo + ")");
+        //Debug.Log("OnDevicePoseStatusChanged(" + status + ", " + statusInfo + ")");
 
         switch (statusInfo)
         {
