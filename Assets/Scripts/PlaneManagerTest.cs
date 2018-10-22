@@ -84,13 +84,12 @@ public class PlaneManagerTest : MonoBehaviour
 
         GroundPlaneHitReceived = (AutomaticHitTestFrameCount == Time.frameCount);
 
-        SetSurfaceIndicatorVisible(
-            GroundPlaneHitReceived);
+        SetSurfaceIndicatorVisible(            GroundPlaneHitReceived);
     }
 
     void OnDestroy()
     {
-        Debug.Log("OnDestroy() called.");
+        //Debug.Log("OnDestroy() called.");
 
         VuforiaARController.Instance.UnregisterVuforiaStartedCallback(OnVuforiaStarted);
         VuforiaARController.Instance.UnregisterOnPauseCallback(OnVuforiaPaused);
@@ -124,13 +123,13 @@ public class PlaneManagerTest : MonoBehaviour
     {
         if (result == null)
         {
-            Debug.LogError("Invalid hit test result!");
+            //Debug.LogError("Invalid hit test result!");
             return;
         }
 
         if (!m_GroundPlaneUI.IsCanvasButtonPressed())
         {
-            Debug.Log("HandleInteractiveHitTest() called.");
+            //Debug.Log("HandleInteractiveHitTest() called.");
 
             // If the PlaneFinderBehaviour's Mode is Automatic, then the Interactive HitTestResult will be centered.
 
@@ -237,7 +236,7 @@ public class PlaneManagerTest : MonoBehaviour
 
     public void ResetScene()
     {
-        Debug.Log("ResetScene() called.");
+        //Debug.Log("ResetScene() called.");
 
         // reset augmentations
         m_PlaneAugmentation.transform.position = Vector3.zero;
@@ -291,6 +290,7 @@ public class PlaneManagerTest : MonoBehaviour
 
     void SetSurfaceIndicatorVisible(bool isVisible)
     {
+        Debug.Log("Is SurfaceIndicator Visible? " + isVisible);
         Renderer[] renderers = m_PlaneFinder.PlaneIndicator.GetComponentsInChildren<Renderer>(true);
         Canvas[] canvas = m_PlaneFinder.PlaneIndicator.GetComponentsInChildren<Canvas>(true);
 
@@ -325,7 +325,7 @@ public class PlaneManagerTest : MonoBehaviour
 
     void OnVuforiaStarted()
     {
-        Debug.Log("OnVuforiaStarted() called.");
+        //Debug.Log("OnVuforiaStarted() called.");
 
         m_StateManager = TrackerManager.Instance.GetStateManager();
 
@@ -343,9 +343,9 @@ public class PlaneManagerTest : MonoBehaviour
         else
         {
             if (m_PositionalDeviceTracker == null)
-                Debug.Log("PositionalDeviceTracker returned null. GroundPlane not supported on this device.");
+                //Debug.Log("PositionalDeviceTracker returned null. GroundPlane not supported on this device.");
             if (m_SmartTerrain == null)
-                Debug.Log("SmartTerrain returned null. GroundPlane not supported on this device.");
+                //Debug.Log("SmartTerrain returned null. GroundPlane not supported on this device.");
 
             MessageBox.DisplayMessageBox(unsupportedDeviceTitle, unsupportedDeviceBody, false, null);
         }
@@ -353,7 +353,7 @@ public class PlaneManagerTest : MonoBehaviour
 
     void OnVuforiaPaused(bool paused)
     {
-        Debug.Log("OnVuforiaPaused(" + paused.ToString() + ") called.");
+        //Debug.Log("OnVuforiaPaused(" + paused.ToString() + ") called.");
 
         if (paused)
             ResetScene();
@@ -366,7 +366,7 @@ public class PlaneManagerTest : MonoBehaviour
 
     void OnTrackerStarted()
     {
-        Debug.Log("OnTrackerStarted() called.");
+        //Debug.Log("OnTrackerStarted() called.");
 
         m_PositionalDeviceTracker = TrackerManager.Instance.GetTracker<PositionalDeviceTracker>();
         m_SmartTerrain = TrackerManager.Instance.GetTracker<SmartTerrain>();
@@ -376,14 +376,14 @@ public class PlaneManagerTest : MonoBehaviour
             if (!m_PositionalDeviceTracker.IsActive)
                 m_PositionalDeviceTracker.Start();
 
-            Debug.Log("PositionalDeviceTracker is Active?: " + m_PositionalDeviceTracker.IsActive +
-                      "\nSmartTerrain Tracker is Active?: " + m_SmartTerrain.IsActive);
+            //Debug.Log("PositionalDeviceTracker is Active?: " + m_PositionalDeviceTracker.IsActive +
+            //          "\nSmartTerrain Tracker is Active?: " + m_SmartTerrain.IsActive);
         }
     }
 
     void OnDevicePoseStatusChanged(TrackableBehaviour.Status status, TrackableBehaviour.StatusInfo statusInfo)
     {
-        Debug.Log("OnDevicePoseStatusChanged(" + status + ", " + statusInfo + ")");
+        //Debug.Log("OnDevicePoseStatusChanged(" + status + ", " + statusInfo + ")");
     }
 
     #endregion // DEVICE_TRACKER_CALLBACK_METHODS
