@@ -237,7 +237,7 @@ public class PlaneManagerTest : MonoBehaviour
 
     public void ResetScene()
     {
-        //Debug.Log("ResetScene() called.");
+        Debug.Log("ResetScene() called.");
 
         // reset augmentations
         m_PlaneAugmentation.transform.position = Vector3.zero;
@@ -262,18 +262,18 @@ public class PlaneManagerTest : MonoBehaviour
         //m_TouchHandler.enableRotation = false;
     }
 
-    //public void ResetTrackers()
-    //{
-    //    Debug.Log("ResetTrackers() called.");
+    public void ResetTrackers()
+    {
+        Debug.Log("ResetTrackers() called.");
 
-    //    m_SmartTerrain = TrackerManager.Instance.GetTracker<SmartTerrain>();
-    //    m_PositionalDeviceTracker = TrackerManager.Instance.GetTracker<PositionalDeviceTracker>();
+        m_SmartTerrain = TrackerManager.Instance.GetTracker<SmartTerrain>();
+        m_PositionalDeviceTracker = TrackerManager.Instance.GetTracker<PositionalDeviceTracker>();
 
-    //    // Stop and restart trackers
-    //    m_SmartTerrain.Stop(); // stop SmartTerrain tracker before PositionalDeviceTracker
-    //    m_PositionalDeviceTracker.Reset();
-    //    m_SmartTerrain.Start(); // start SmartTerrain tracker after PositionalDeviceTracker
-    //}
+        // Stop and restart trackers
+        m_SmartTerrain.Stop(); // stop SmartTerrain tracker before PositionalDeviceTracker
+        m_PositionalDeviceTracker.Reset();
+        m_SmartTerrain.Start(); // start SmartTerrain tracker after PositionalDeviceTracker
+    }
 
     #endregion // PUBLIC_BUTTON_METHODS
 

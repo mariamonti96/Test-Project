@@ -19,8 +19,8 @@ public class GroundPlaneTestUI : MonoBehaviour
     //public Text m_Instructions;
     public CanvasGroup m_ScreenReticle;
 
-    //[Header("UI Buttons")]
-    //public Button m_ResetButton;
+    [Header("UI Buttons")]
+    public Button m_ResetButton;
     //public Toggle m_PlacementToggle, m_GroundToggle, m_MidAirToggle, m_MidAirToggle2;
     #endregion // PUBLIC_MEMBERS
 
@@ -48,7 +48,7 @@ public class GroundPlaneTestUI : MonoBehaviour
         //m_ResetButton.interactable = m_MidAirToggle.interactable =
         //m_GroundToggle.interactable = m_PlacementToggle.interactable = 
         //        m_MidAirToggle2.interactable = false;
-
+        m_ResetButton.interactable = false;
 
         //m_Title.text = TITLE_PLACEMENT;
         m_TrackerStatus.text = "";
@@ -65,11 +65,11 @@ public class GroundPlaneTestUI : MonoBehaviour
 
     void Update()
     {
-        //if (m_ProductPlacement.IsPlaced || PlaneManager.AstronautIsPlaced)
-        //{
-        //    m_ResetButton.interactable = m_MidAirToggle.interactable = true;
-        //    m_ResetButton.interactable = m_MidAirToggle2.interactable = true;
-        //}
+        if (PlaneManagerTest.AstronautIsPlaced)
+        {
+            m_ResetButton.interactable = true;
+           
+        }
 
         m_TrackerStatusImage.enabled = !string.IsNullOrEmpty(m_TrackerStatus.text);
     }
@@ -143,7 +143,7 @@ public class GroundPlaneTestUI : MonoBehaviour
     public void Reset()
     {
         //m_ResetButton.interactable = m_MidAirToggle.interactable = false;
-        //m_ResetButton.interactable = m_MidAirToggle2.interactable = false;
+        m_ResetButton.interactable = false;
         
 
 
@@ -171,22 +171,22 @@ public class GroundPlaneTestUI : MonoBehaviour
 
     public bool InitializeUI()
     {
-    //    // Runs only once after first successful Automatic hit test
-    //    //m_PlacementToggle.interactable = true;
-    //    //m_GroundToggle.interactable = true;
+        // Runs only once after first successful Automatic hit test
+        //m_PlacementToggle.interactable = true;
+        //m_GroundToggle.interactable = true;
 
-    //    //if (Vuforia.VuforiaRuntimeUtilities.IsPlayMode())
-    //    //{
-    //    //    m_MidAirToggle.interactable = true;
-    //    //    m_MidAirToggle2.interactable = true;
-    //    //    m_ResetButton.interactable = true;
-    //    //}
-    //    m_MidAirToggle.interactable = true;
-    //    m_MidAirToggle2.interactable = true;
-    //    m_ResetButton.interactable = true;
+        if (Vuforia.VuforiaRuntimeUtilities.IsPlayMode())
+        {
+        //    m_MidAirToggle.interactable = true;
+        //    m_MidAirToggle2.interactable = true;
+            m_ResetButton.interactable = true;
+        }
+        //m_MidAirToggle.interactable = true;
+        //m_MidAirToggle2.interactable = true;
+        m_ResetButton.interactable = true;
 
-    //    // Make the PlacementToggle active
-    //    m_PlacementToggle.isOn = true;
+        // Make the PlacementToggle active
+        //m_PlacementToggle.isOn = true;
 
         return true;
     }
