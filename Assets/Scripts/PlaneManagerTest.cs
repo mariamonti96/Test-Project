@@ -291,7 +291,7 @@ public class PlaneManagerTest : MonoBehaviour
 
     void SetSurfaceIndicatorVisible(bool isVisible)
     {
-        Debug.Log("Is SurfaceIndicator Visible? " + isVisible);
+        //Debug.Log("Is SurfaceIndicator Visible? " + isVisible);
         Renderer[] renderers = m_PlaneFinder.PlaneIndicator.GetComponentsInChildren<Renderer>(true);
         Canvas[] canvas = m_PlaneFinder.PlaneIndicator.GetComponentsInChildren<Canvas>(true);
 
@@ -354,7 +354,7 @@ public class PlaneManagerTest : MonoBehaviour
 
     void OnVuforiaPaused(bool paused)
     {
-        //Debug.Log("OnVuforiaPaused(" + paused.ToString() + ") called.");
+        Debug.Log("OnVuforiaPaused(" + paused.ToString() + ") called.");
 
         if (paused)
             ResetScene();

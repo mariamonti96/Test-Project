@@ -48,7 +48,7 @@ public class GroundPlaneTestUI : MonoBehaviour
         //m_ResetButton.interactable = m_MidAirToggle.interactable =
         //m_GroundToggle.interactable = m_PlacementToggle.interactable = 
         //        m_MidAirToggle2.interactable = false;
-        m_ResetButton.interactable = false;
+        m_ResetButton.interactable = true;
 
         //m_Title.text = TITLE_PLACEMENT;
         m_TrackerStatus.text = "";
