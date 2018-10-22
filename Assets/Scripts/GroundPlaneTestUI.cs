@@ -145,6 +145,7 @@ public class GroundPlaneTestUI : MonoBehaviour
         Debug.Log("Reset() called");
         //m_ResetButton.interactable = m_MidAirToggle.interactable = false;
         m_ResetButton.interactable = false;
+        //PlaneManagerTest.SetGroundMode();
         
 
 

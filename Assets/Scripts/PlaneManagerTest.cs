@@ -186,17 +186,17 @@ public class PlaneManagerTest : MonoBehaviour
 
     #region PUBLIC_BUTTON_METHODS
 
-    //public void SetGroundMode(bool active)
-    //{
-    //    if (active)
-    //    {
-    //        planeMode = PlaneMode.GROUND;
-    //        m_GroundPlaneUI.UpdateTitle();
-    //        m_PlaneFinder.enabled = true;
-    //        m_MidAirPositioner.enabled = false;
-    //        m_TouchHandler.enableRotation = false;
-    //    }
-    //}
+    public void SetGroundMode(bool active)
+    {
+        if (active)
+        {
+            //planeMode = PlaneMode.GROUND;
+            //m_GroundPlaneUI.UpdateTitle();
+            m_PlaneFinder.enabled = true;
+            //m_MidAirPositioner.enabled = false;
+            //m_TouchHandler.enableRotation = false;
+        }
+    }
 
     //public void SetMidAirMode(bool active)
     //{
@@ -256,7 +256,7 @@ public class PlaneManagerTest : MonoBehaviour
 
         DeleteAnchors();
         //m_ProductPlacement.SetProductAnchor(null);
-        //AstronautIsPlaced = false;
+        AstronautIsPlaced = false;
         m_GroundPlaneUI.Reset();
         //m_TouchHandler.enableRotation = false;
     }
