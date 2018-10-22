@@ -35,8 +35,8 @@ public class GroundPlaneTestUI : MonoBehaviour
     PointerEventData m_PointerEventData;
     EventSystem m_EventSystem;
 
-    ProductPlacement m_ProductPlacement;
-    TouchHandler m_TouchHandler;
+    ProductPlacementTest m_ProductPlacement;
+    TouchHandlerTest m_TouchHandler;
 
     Image m_TrackerStatusImage;
     #endregion // PRIVATE_MEMBERS
@@ -54,8 +54,8 @@ public class GroundPlaneTestUI : MonoBehaviour
         m_TrackerStatus.text = "";
         m_TrackerStatusImage = m_TrackerStatus.GetComponentInParent<Image>();
 
-        m_ProductPlacement = FindObjectOfType<ProductPlacement>();
-        m_TouchHandler = FindObjectOfType<TouchHandler>();
+        m_ProductPlacement = FindObjectOfType<ProductPlacementTest>();
+        m_TouchHandler = FindObjectOfType<TouchHandlerTest>();
 
         m_GraphicRayCaster = FindObjectOfType<GraphicRaycaster>();
         m_EventSystem = FindObjectOfType<EventSystem>();
@@ -76,56 +76,58 @@ public class GroundPlaneTestUI : MonoBehaviour
 
     void LateUpdate()
     {
-        if (PlaneManager.GroundPlaneHitReceived)
-        {
-            // We got an automatic hit test this frame
+        //if (PlaneManager.GroundPlaneHitReceived)
+        //{
+        //    // We got an automatic hit test this frame
 
-            // Hide the onscreen reticle when we get a hit test
-            m_ScreenReticle.alpha = 0;
+        //    // Hide the onscreen reticle when we get a hit test
+        //    m_ScreenReticle.alpha = 0;
 
-            //m_Instructions.transform.parent.gameObject.SetActive(true);
-            //m_Instructions.enabled = true;
+        //    //m_Instructions.transform.parent.gameObject.SetActive(true);
+        //    //m_Instructions.enabled = true;
 
-            //if (PlaneManager.planeMode == PlaneManager.PlaneMode.GROUND)
-            //{
-            //    m_Instructions.text = "Tap to place Astronaut";
-            //}
-            //else if (PlaneManager.planeMode == PlaneManager.PlaneMode.PLACEMENT)
-            //{
-            //    m_Instructions.text = (m_ProductPlacement.IsPlaced) ?
-            //        "• Touch and drag to move Chair" +
-            //        "\n• Two fingers to rotate" +
-            //        ((m_TouchHandler.enablePinchScaling) ? " or pinch to scale" : "") +
-            //        "\n• Double-tap to reset Anchor location"
-            //        :
-            //        "Tap to place Chair";
-            //}
-        }
-        else
-        {
-            // No automatic hit test, so set alpha based on which plane mode is active
-            //m_ScreenReticle.alpha =
-            //(PlaneManager.planeMode == PlaneManager.PlaneMode.GROUND ||
-            //PlaneManager.planeMode == PlaneManager.PlaneMode.PLACEMENT) ? 1 : 0;
+        //    //if (PlaneManager.planeMode == PlaneManager.PlaneMode.GROUND)
+        //    //{
+        //    //    m_Instructions.text = "Tap to place Astronaut";
+        //    //}
+        //    //else if (PlaneManager.planeMode == PlaneManager.PlaneMode.PLACEMENT)
+        //    //{
+        //    //    m_Instructions.text = (m_ProductPlacement.IsPlaced) ?
+        //    //        "• Touch and drag to move Chair" +
+        //    //        "\n• Two fingers to rotate" +
+        //    //        ((m_TouchHandler.enablePinchScaling) ? " or pinch to scale" : "") +
+        //    //        "\n• Double-tap to reset Anchor location"
+        //    //        :
+        //    //        "Tap to place Chair";
+        //    //}
+        //}
+        //else
+        //{
+        //    // No automatic hit test, so set alpha based on which plane mode is active
+        //    //m_ScreenReticle.alpha =
+        //    //(PlaneManager.planeMode == PlaneManager.PlaneMode.GROUND ||
+        //    //PlaneManager.planeMode == PlaneManager.PlaneMode.PLACEMENT) ? 1 : 0;
 
-            m_ScreenReticle.alpha = 1;
+        //    m_ScreenReticle.alpha = 0;
 
-            //m_Instructions.transform.parent.gameObject.SetActive(true);
-            //m_Instructions.enabled = true;
+        //    //m_Instructions.transform.parent.gameObject.SetActive(true);
+        //    //m_Instructions.enabled = true;
 
-            //if (PlaneManager.planeMode == PlaneManager.PlaneMode.GROUND ||
-            //    PlaneManager.planeMode == PlaneManager.PlaneMode.PLACEMENT)
-            //{
-            //    m_Instructions.text = "Point device towards ground";
-            //}
-            //else if (PlaneManager.planeMode == PlaneManager.PlaneMode.MIDAIR)
-            //{
-            //    m_Instructions.text = "Tap to place Drone";
-            //}
-            //else if (PlaneManager.planeMode == PlaneManager.PlaneMode.MIDAIR2){
-            //    m_Instructions.text = "Tap to place Spacecraft";
-            //}
-        }
+        //    //if (PlaneManager.planeMode == PlaneManager.PlaneMode.GROUND ||
+        //    //    PlaneManager.planeMode == PlaneManager.PlaneMode.PLACEMENT)
+        //    //{
+        //    //    m_Instructions.text = "Point device towards ground";
+        //    //}
+        //    //else if (PlaneManager.planeMode == PlaneManager.PlaneMode.MIDAIR)
+        //    //{
+        //    //    m_Instructions.text = "Tap to place Drone";
+        //    //}
+        //    //else if (PlaneManager.planeMode == PlaneManager.PlaneMode.MIDAIR2){
+        //    //    m_Instructions.text = "Tap to place Spacecraft";
+        //    //}
+        //}
+
+        m_ScreenReticle.alpha = 0;
     }
 
     void OnDestroy()

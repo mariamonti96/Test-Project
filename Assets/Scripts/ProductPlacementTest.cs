@@ -26,15 +26,15 @@ public class ProductPlacementTest : MonoBehaviour
 
 
     #region PRIVATE_MEMBERS
-    //Material[] chairMaterials, chairMaterialsTransparent;
-    //Material ChairShadow, ChairShadowTransparent;
+    Material[] chairMaterials, chairMaterialsTransparent;
+    Material ChairShadow, ChairShadowTransparent;
     MeshRenderer chairRenderer;
     [SerializeField]
-    //MeshRenderer shadowRenderer;
+    MeshRenderer shadowRenderer;
 
     const string EmulatorGroundPlane = "Emulator Ground Plane";
 
-    GroundPlaneTestUI m_GroundPlaneUI;
+    GroundPlaneUI m_GroundPlaneUI;
     Camera mainCamera;
     Ray cameraToPlaneRay;
     RaycastHit cameraToPlaneHit;
@@ -49,22 +49,22 @@ public class ProductPlacementTest : MonoBehaviour
     {
         chairRenderer = GetComponent<MeshRenderer>();
 
-        //chairMaterials = new Material[]
-        //{
-        //    Resources.Load<Material>("ChairBody"),
-        //    Resources.Load<Material>("ChairFrame")
-        //};
+        chairMaterials = new Material[]
+        {
+            Resources.Load<Material>("ChairBody"),
+            Resources.Load<Material>("ChairFrame")
+        };
 
-        //chairMaterialsTransparent = new Material[]
-        //{
-        //    Resources.Load<Material>("ChairBodyTransparent"),
-        //    Resources.Load<Material>("ChairFrameTransparent")
-        //};
+        chairMaterialsTransparent = new Material[]
+        {
+            Resources.Load<Material>("ChairBodyTransparent"),
+            Resources.Load<Material>("ChairFrameTransparent")
+        };
 
-        //ChairShadow = Resources.Load<Material>("ChairShadow");
-        //ChairShadowTransparent = Resources.Load<Material>("ChairShadowTransparent");
+        ChairShadow = Resources.Load<Material>("ChairShadow");
+        ChairShadowTransparent = Resources.Load<Material>("ChairShadowTransparent");
 
-        m_GroundPlaneUI = FindObjectOfType<GroundPlaneTestUI>();
+        m_GroundPlaneUI = FindObjectOfType<GroundPlaneUI>();
 
         // Enable floor collider if running on device; Disable if running in PlayMode
         Floor.gameObject.SetActive(!VuforiaRuntimeUtilities.IsPlayMode());
@@ -85,14 +85,19 @@ public class ProductPlacementTest : MonoBehaviour
 
     void Update()
     {
+        if (PlaneManager.planeMode == PlaneManager.PlaneMode.PLACEMENT)
+        {
+            shadowRenderer.enabled = chairRenderer.enabled = (IsPlaced || PlaneManager.GroundPlaneHitReceived);
+            EnablePreviewModeTransparency(!IsPlaced);
+            if (!IsPlaced)
+                UtilityHelper.RotateTowardCamera(gameObject);
+        }
+        else
+        {
+            shadowRenderer.enabled = chairRenderer.enabled = IsPlaced;
+        }
 
-        chairRenderer.enabled = (IsPlaced || PlaneManagerTest.GroundPlaneHitReceived);
-        //EnablePreviewModeTransparency(!IsPlaced);
-        if (!IsPlaced)
-            UtilityHelperTest.RotateTowardCamera(gameObject);
-   
-
-        if (IsPlaced)
+        if (PlaneManager.planeMode == PlaneManager.PlaneMode.PLACEMENT && IsPlaced)
         {
             m_RotationIndicator.SetActive(Input.touchCount == 2);
 
@@ -141,7 +146,7 @@ public class ProductPlacementTest : MonoBehaviour
             IsPlaced = true;
             gameObject.transform.SetParent(transform);
             gameObject.transform.localPosition = Vector3.zero;
-            UtilityHelperTest.RotateTowardCamera(gameObject);
+            UtilityHelper.RotateTowardCamera(gameObject);
         }
         else
         {
@@ -153,11 +158,11 @@ public class ProductPlacementTest : MonoBehaviour
 
 
     #region PRIVATE_METHODS
-    //void EnablePreviewModeTransparency(bool previewEnabled)
-    //{
-    //    chairRenderer.materials = previewEnabled ? chairMaterialsTransparent : chairMaterials;
-    //    shadowRenderer.material = previewEnabled ? ChairShadowTransparent : ChairShadow;
-    //}
+    void EnablePreviewModeTransparency(bool previewEnabled)
+    {
+        chairRenderer.materials = previewEnabled ? chairMaterialsTransparent : chairMaterials;
+        shadowRenderer.material = previewEnabled ? ChairShadowTransparent : ChairShadow;
+    }
     #endregion // PRIVATE_METHODS
 
 }
