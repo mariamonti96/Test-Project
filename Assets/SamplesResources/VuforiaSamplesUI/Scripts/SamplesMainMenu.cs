@@ -24,7 +24,8 @@ public class SamplesMainMenu : MonoBehaviour
         MultiTargets,
         CylinderTargets,
         UserDefinedTargets,
-        VirtualButtons
+        VirtualButtons,
+        GroundPlaneSample
     }
 
     public Canvas AboutCanvas;
@@ -116,9 +117,65 @@ public class SamplesMainMenu : MonoBehaviour
             case ("VirtualButtons"):
                 menuItem = MenuItem.VirtualButtons;
                 break;
+            case ("GroundPlaneSample"):
+                menuItem = MenuItem.GroundPlaneSample;
+                break;
         }
 
         LoadingScreen.SceneToLoad = "3-" + menuItem.ToString();
+
+        AboutTitle.text = aboutScreenInfo.GetTitle(menuItem.ToString());
+        AboutDescription.text = aboutScreenInfo.GetDescription(menuItem.ToString());
+
+        AboutCanvas.transform.parent.transform.position = Vector3.zero; // move canvas into position
+        AboutCanvas.sortingOrder = 2; // bring canvas in front of main menu
+        isAboutScreenVisible = true;
+
+    }
+
+    public void LoadGroundPlaneSampleScene(string itemSelected)
+    {
+        UpdateConfiguration(itemSelected);
+
+        //// This method called from list of Sample App menu buttons
+        //switch (itemSelected)
+        //{
+        //    case ("ImageTargets"):
+        //        menuItem = MenuItem.ImageTargets;
+        //        break;
+        //    case ("ModelTargets"):
+        //        menuItem = MenuItem.ModelTargets;
+        //        break;
+        //    case ("GroundPlane"):
+        //        menuItem = MenuItem.GroundPlane;
+        //        break;
+        //    case ("VuMark"):
+        //        menuItem = MenuItem.VuMark;
+        //        break;
+        //    case ("CloudReco"):
+        //        menuItem = MenuItem.CloudReco;
+        //        break;
+        //    case ("ObjectReco"):
+        //        menuItem = MenuItem.ObjectReco;
+        //        break;
+        //    case ("MultiTargets"):
+        //        menuItem = MenuItem.MultiTargets;
+        //        break;
+        //    case ("CylinderTargets"):
+        //        menuItem = MenuItem.CylinderTargets;
+        //        break;
+        //    case ("UserDefinedTargets"):
+        //        menuItem = MenuItem.UserDefinedTargets;
+        //        break;
+        //    case ("VirtualButtons"):
+        //        menuItem = MenuItem.VirtualButtons;
+        //        break;
+        //    case ("GroundPlaneSample"):
+        //        menuItem = MenuItem.GroundPlaneSample;
+        //        break;
+        //}
+
+        LoadingScreen.SceneToLoad = "SampleGroundScene";
 
         AboutTitle.text = aboutScreenInfo.GetTitle(menuItem.ToString());
         AboutDescription.text = aboutScreenInfo.GetDescription(menuItem.ToString());
