@@ -149,7 +149,7 @@ public class PlaneManagerTest : MonoBehaviour
             UtilityHelperTest.EnableRendererColliderCanvas(m_PlaneAugmentation, true);
 
             // Astronaut should rotate toward camera with each placement
-            m_PlaneAugmentation.transform.localPosition = new Vector3(0.0f, 1.0f, 0.0f);
+            m_PlaneAugmentation.transform.localPosition = Vector3.zero;
             UtilityHelperTest.RotateTowardCamera(m_PlaneAugmentation);
 
             AstronautIsPlaced = true;
@@ -237,8 +237,8 @@ public class PlaneManagerTest : MonoBehaviour
         Debug.Log("ResetScene() called.");
 
         // reset augmentations
-        m_PlaneAugmentation.transform.position = new Vector3(0.0f, 1.0f, 0.0f);
-        m_PlaneAugmentation.transform.localEulerAngles = new Vector3(0, 90, 0);
+        m_PlaneAugmentation.transform.position = Vector3.zero;
+        m_PlaneAugmentation.transform.localEulerAngles = Vector3.zero;
         UtilityHelperTest.EnableRendererColliderCanvas(m_PlaneAugmentation, false);
 
         //m_MidAirAugmentation.transform.position = Vector3.zero;
