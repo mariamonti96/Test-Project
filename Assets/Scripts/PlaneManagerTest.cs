@@ -150,8 +150,10 @@ public class PlaneManagerTest : MonoBehaviour
 
             // Astronaut should rotate toward camera with each placement
 
+
             m_PlaneAugmentation.transform.parent.localPosition = new Vector3.zero();
             UtilityHelperTest.RotateTowardCamera(m_PlaneAugmentation.transform.parent);
+
 
             AstronautIsPlaced = true;
 
